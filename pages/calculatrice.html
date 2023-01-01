@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/calculatrice.css">
+</head>
+<body>
+    
+    <div class="calculatrice">
+        <div class="haut">
+            <input type="text" id="input_top" maxlength="10" max="10">
+            <input type="text" id="input_top1" >
+            <input type="hidden" name="calc" id="calc">
+            
+        </div>
+        <div class="bas">
+
+       
+            <div class="chiffre">
+                <button onclick="afficher(this)" value="7">7</button>
+                <button  onclick="afficher(this)" value="8">8</button>
+                <button  onclick="afficher(this)" value="9">9</button>
+                <button  onclick="afficher(this)" value="4">4</button>
+                <button  onclick="afficher(this)" value="5">5</button>
+                <button  onclick="afficher(this)" value="6">6</button>
+                <button  onclick="afficher(this)" value="1">1</button>
+                <button  onclick="afficher(this)" value="2">2</button>
+                <button  onclick="afficher(this)" value="3">3</button>
+                <button  onclick="afficher(this)" value=".">,</button>
+                <button  onclick="afficher(this)" value="0">0</button>
+            </div>
+    
+            <div class="operation">
+                <button onclick="afficher(this)" value="/">/</button>
+                <button onclick="supprimer()" value="*">su</button>
+                <button onclick="afficher(this)" value="*">x</button>
+                <button onclick="afficher(this)" value="+">+</button>
+                <button onclick="afficher(this)" value="-">-</button>
+                <button onclick="calculer(this)" value="=" class="bt_egal">=</button>
+            </div>
+            
+    
+            <div class="fonction">
+                <button>INV</button>
+                <button onclick="afficher(this)" value="Math.rad">RAD</button>
+                <button onclick="afficher(this)" value="%">%</button>
+                <button onclick="afficher(this)" value="Math.sin(">sin</button>
+                <button onclick="afficher(this)" value="Math.cos(">cos</button>
+                <button onclick="afficher(this)" value="Math.tan(">tan</button>
+                <button onclick="afficher(this)" value="Math.ln(">ln</button>
+                <button onclick="afficher(this)" value="Math.log10(">log</button>
+                <button>!</button>
+                <button onclick="afficher(this)" value="Math.PI">pi</button>
+                <button onclick="afficher(this)" value="Math.e10(">e</button>
+                <button onclick="afficher(this)" value="**">^</button>
+                <button onclick="afficher(this)" value="(">(</button>
+                <button onclick="afficher(this)" value=")">)</button>
+                <button onclick="afficher(this)" value="Math.SQRT2">rac</button>
+            </div>
+        </div>
+
+    </div>
+    
+    <script>
+        tab = {
+                "0":"0","1":"1","2":"2","3":"3","4":"4","5":"5","6":"6","7":"7","8":"8","9":"9",
+                "+":"+","-":"-","/":"/","*":"x",
+                "(":"(",")":")",
+                "Math.sin(":"sin(","Math.cos(":"cos(","Math.tan(":"tan(","Math.ln(":"ln","**":"^"
+            }
+        
+        let evval = ""
+        let valeur;
+        let d;
+
+        function supprimer()
+        {
+            const dernier = document.getElementById("input_top").value;
+            const dernier1 = document.getElementById("calc").value;
+            document.getElementById("input_top").value = dernier.substr(0, dernier.length-1)
+            document.getElementById("calc").value = dernier1.substr(0, dernier1.length-1)
+
+        }
+        
+        function afficher(button) {
+            bt = button.value
+
+            btn_trans = tab[bt]
+            evval += btn_trans
+
+            let i = document.getElementById("calc").value +=bt;
+            let h = document.getElementById("input_top").value +=btn_trans;
+            document.getElementById("input_top1").value = eval(i)
+            if(d)
+            {
+                i = document.getElementById("calc").value;
+                h = document.getElementById("input_top").value;
+                d=false
+            }
+
+        }
+
+
+        function calculer(){
+            try {
+                //valeur = evval
+                valeur = document.getElementById("calc").value
+                let b = eval(valeur)
+                document.getElementById("input_top1").value = "";
+                document.getElementById("input_top").value =b;
+                valeur = document.getElementById("calc").value = b;
+                d = true
+                
+            } catch (error) {
+                document.getElementById("input_top1").value ="Une erreur s'est produite";
+            }
+
+            if(document.getElementById("input_top").value=="" || document.getElementById("input_top").value == "undefined" || document.getElementById("calc").value=="" || document.getElementById("calc").value == "undefined")
+            {   
+                document.getElementById("input_top").value = ""
+                document.getElementById("calc").value = ""
+                valeur = ""
+            }
+
+        
+        function transform(elements)
+        {
+
+        }
+            
+        }
+    </script>
+</body>
+</html>
