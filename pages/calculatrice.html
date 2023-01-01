@@ -65,9 +65,10 @@
     </div>
     
     <script>
+        //permet d'afficher les caractères que l'utilisateur est censé voir
         tab = {
                 "0":"0","1":"1","2":"2","3":"3","4":"4","5":"5","6":"6","7":"7","8":"8","9":"9",
-                "+":"+","-":"-","/":"/","*":"x",
+                "+":"+","-":"-","/":"/","*":"x",".":",",
                 "(":"(",")":")",
                 "Math.sin(":"sin(","Math.cos(":"cos(","Math.tan(":"tan(","Math.ln(":"ln","**":"^"
             }
@@ -75,9 +76,22 @@
         let evval = ""
         let valeur;
         let d;
+        
+        //permet de véfier que l'utilisateur a appuyé sur égal
+        let clean_all = false;
+        
 
         function supprimer()
         {
+            //efface tout lorsque l'utilisateur appuie sur égal et supprime
+            if(clean_all)
+            {
+                document.getElementById("input_top").value = "";
+                document.getElementById("calc").value = "";
+                clean_all = false
+            }
+
+            //efface un chiffre après l'autre
             const dernier = document.getElementById("input_top").value;
             const dernier1 = document.getElementById("calc").value;
             document.getElementById("input_top").value = dernier.substr(0, dernier.length-1)
@@ -86,6 +100,8 @@
         }
         
         function afficher(button) {
+            //fonction permettant d'afficher lorsque l'utilisateur appuie sur une touche
+
             bt = button.value
 
             btn_trans = tab[bt]
@@ -94,6 +110,7 @@
             let i = document.getElementById("calc").value +=bt;
             let h = document.getElementById("input_top").value +=btn_trans;
             document.getElementById("input_top1").value = eval(i)
+            
             if(d)
             {
                 i = document.getElementById("calc").value;
@@ -105,6 +122,8 @@
 
 
         function calculer(){
+            //fonction permettant de calculer lorsque l'utilisateur appuie sur =
+            
             try {
                 //valeur = evval
                 valeur = document.getElementById("calc").value
@@ -113,6 +132,7 @@
                 document.getElementById("input_top").value =b;
                 valeur = document.getElementById("calc").value = b;
                 d = true
+                clean_all = true
                 
             } catch (error) {
                 document.getElementById("input_top1").value ="Une erreur s'est produite";
@@ -124,14 +144,9 @@
                 document.getElementById("calc").value = ""
                 valeur = ""
             }
-
-        
-        function transform(elements)
-        {
-
         }
             
-        }
+
     </script>
 </body>
 </html>

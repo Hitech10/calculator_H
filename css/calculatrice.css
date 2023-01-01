@@ -176,8 +176,9 @@ h1
     border: none;
 }
 
-.bt_egal
+.operation .bt_egal
 {
+    
     color: white;
     border: solid 1px;
     background-color: blue;
