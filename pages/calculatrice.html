@@ -53,12 +53,12 @@
                 <button onclick="afficher(this)" value="Math.ln(">ln</button>
                 <button onclick="afficher(this)" value="Math.log10(">log</button>
                 <button>!</button>
-                <button onclick="afficher(this)" value="Math.PI">pi</button>
+                <button onclick="afficher(this)" value="Math.PI">π</button>
                 <button onclick="afficher(this)" value="Math.e10(">e</button>
                 <button onclick="afficher(this)" value="**">^</button>
                 <button onclick="afficher(this)" value="(">(</button>
                 <button onclick="afficher(this)" value=")">)</button>
-                <button onclick="afficher(this)" value="Math.SQRT2">rac</button>
+                <button onclick="afficher(this)" value="Math.sqrt(">√</button>
             </div>
         </div>
 
@@ -70,13 +70,13 @@
                 "0":"0","1":"1","2":"2","3":"3","4":"4","5":"5","6":"6","7":"7","8":"8","9":"9",
                 "+":"+","-":"-","/":"/","*":"x",".":",",
                 "(":"(",")":")",
-                "Math.sin(":"sin(","Math.cos(":"cos(","Math.tan(":"tan(","Math.ln(":"ln","**":"^"
+                "Math.sin(":"sin(","Math.cos(":"cos(","Math.tan(":"tan(","Math.ln(":"ln","**":"^",
+                "Math.sqrt(":"√(","Math.PI":"π"
             }
         
         let evval = ""
         let valeur;
         let d;
-        
         //permet de véfier que l'utilisateur a appuyé sur égal
         let clean_all = false;
         
